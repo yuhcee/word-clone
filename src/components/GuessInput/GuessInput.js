@@ -5,7 +5,7 @@ function GuessInput() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log({ guess: answer.toUpperCase() });
+        console.log({ guess: answer });
         setAnswer('');
     };
 
@@ -17,7 +17,7 @@ function GuessInput() {
                 type="text"
                 value={answer}
                 onChange={(event) => {
-                    setAnswer(event.target.value);
+                    setAnswer(event.target.value.toUpperCase());
                 }}
             />
         </form>
