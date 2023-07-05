@@ -4,9 +4,7 @@ import { NUM_OF_GUESSES_ALLOWED } from '../../constants';
 import { checkGuess } from '../../game-helpers';
 import Banner from '../Banner/Banner';
 
-function GuessResults({ guesses, answer }) {
-    const gameWon = guesses.length > 0 && checkGuess(guesses.at(-1).guess, answer).every((result) => result.status === 'correct');
-    const gameLost = guesses.length >= NUM_OF_GUESSES_ALLOWED;
+function GuessResults({ guesses, answer, gameWon, gameLost }) {
     const checkGuessResults = guesses.map((guess) => checkGuess(guess.guess, answer));
 
     return (
