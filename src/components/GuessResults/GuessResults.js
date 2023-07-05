@@ -5,12 +5,12 @@ import { checkGuess } from '../../game-helpers';
 import Banner from '../Banner/Banner';
 
 function GuessResults({ guesses, answer, gameWon, gameLost }) {
-    const checkGuessResults = guesses.map((guess) => checkGuess(guess.guess, answer));
+    const checkGuessResults = guesses.map((guess) => checkGuess(guess, answer));
 
     return (
         <div className="guess-results">
             {range(NUM_OF_GUESSES_ALLOWED).map((num) => {
-                const currentGuess = guesses[num] ? guesses[num].guess : '';
+                const currentGuess = guesses[num] ? guesses[num] : '';
                 const currentCheckGuessResult = checkGuessResults[num] || [];
 
                 return (

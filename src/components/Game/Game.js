@@ -14,12 +14,11 @@ console.info({ answer });
 
 function Game() {
     const [guesses, setGuesses] = React.useState([]);
-    const gameLost = guesses.length > NUM_OF_GUESSES_ALLOWED;
-    const gameWon = guesses.length > 0 && checkGuess(guesses.at(-1).guess, answer).every((result) => result.status === 'correct');
+    const gameLost = guesses.length >= NUM_OF_GUESSES_ALLOWED;
+    const gameWon = guesses.length > 0 && checkGuess(guesses.at(-1), answer).every((result) => result.status === 'correct');
 
     const handleAddGuess = (guess) => {
-        const newGuess = { guess, id: crypto.randomUUID() };
-        const newGuesses = [...guesses, newGuess];
+        const newGuesses = [...guesses, guess];
         setGuesses(newGuesses);
     };
     return (
