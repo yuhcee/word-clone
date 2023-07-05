@@ -1,10 +1,11 @@
 import React from 'react';
 
-function GuessInput({ handleAddGuess }) {
+function GuessInput({ handleAddGuess, disabled }) {
     const [guess, setGuess] = React.useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        if (guess.length < 5) return;
         handleAddGuess(guess);
         setGuess('');
     };
@@ -19,6 +20,7 @@ function GuessInput({ handleAddGuess }) {
                 onChange={(event) => {
                     setGuess(event.target.value.toUpperCase());
                 }}
+                disabled={disabled}
             />
         </form>
     );
